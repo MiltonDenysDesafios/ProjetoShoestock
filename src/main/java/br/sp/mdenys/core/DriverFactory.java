@@ -10,12 +10,14 @@ public abstract class DriverFactory {
 	private static WebDriver driver;
 
 	public static WebDriver getDriver() {
+		
 		if (driver == null) {
 			switch (Propriedades.browser) {
 			case FIREFOX:
 				driver = new FirefoxDriver();
 				break;
 			case CHROME:
+				System.setProperty("webdriver.chrome.driver","C:\\chromedriver\\chromedriver.exe");
 				driver = new ChromeDriver();
 				break;
 			}

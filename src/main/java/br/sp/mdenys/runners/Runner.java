@@ -2,12 +2,12 @@ package br.sp.mdenys.runners;
 
 import org.junit.runner.RunWith;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-features = "src/main/java/br/sp/mdenys/features/Shoestock.features",
+features = "src/main/java/br/sp/mdenys/features/",
 glue = "",
 tags = "@validar_produtos_carrinho"
 )

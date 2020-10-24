@@ -9,10 +9,9 @@ import io.cucumber.java.en.When;
 public class ShoestockSteps {
 
 	
-	@Given("^I acess the Home page$")
-	public static void acessHomePage()  {
-		
-		getDriver().get("https://www.sky.com.br");
+	@Given("I acess the Home page")
+	public static void acessHomePage()  {		
+		getDriver().get("https://www.shoestock.com.br");
 
 	}
 
