@@ -6,6 +6,7 @@ https://github.com/mDenys7/ProjetoShoestock
 # Pré-condição
 
 1-Deve ter a linguagem de programação Java instalado na máquina
+
 2-Deve ter alguma IDE para rodar o teste
 
 # Drivers
