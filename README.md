@@ -1,2 +1,23 @@
-# ProjetoShoestock
+# Repositório
  
+Repositório
+https://github.com/mDenys7/ProjetoShoestock
+
+# Pré-condição
+
+1. Deve ter a linguagem de programação Java instalado na máquina
+
+# Drivers
+
+Antes de rodar algum cenário Web você deve adicionar o driver do navegador em uma pasta reconhecida no path do sistema com a versão compatível a versão atual do seu navegador.
+
+# Uso
+
+Para executar algum cenário Web, basta rodar a classe Runner:
+
+# Mapeamento
+
+- Os cenário estão em `src/main/java/br/sp/mdenys/features/`
+- Os steps estão em `features\step_definitions\<SISTEMA>\<FLUXO>`
+- OS mapeamentos das páginas estão em `features\page_objects\<PAGINA>`
+- As referências dos page_objects estão em `features\support\ref_page\<SISTEMA>`
