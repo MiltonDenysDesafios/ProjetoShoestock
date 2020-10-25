@@ -2,6 +2,7 @@ package br.sp.mdenys.steps;
 
 import br.sp.mdenys.core.DriverFactory;
 import br.sp.mdenys.pages.ShoestockPage;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
@@ -9,15 +10,16 @@ public class ShoestockSteps {
 
 	
 	@Given("eu acesso a pagina principal")
-	public static void acessaPaginaPrincipal()  {		
-		DriverFactory.getDriver();
+	public static void acessaPaginaPrincipal(DataTable data)  {
+		ShoestockPage.acessaPagina(data);
+		//DriverFactory.getDriver().get("https://www.shoestock.com.br");
 
 	}
 
 	
 	@And("preencho o campo de busca")
 	public static void preencheCampoBUsca(){
-		ShoestockPage.searchProduct();
+		ShoestockPage.buscaProduto();
 	}
 	@And("clico no icone de busca")
 	public static void clicaIconeBusca(){
@@ -48,6 +50,11 @@ public class ShoestockSteps {
 		ShoestockPage.validarProdutoCarrinho();
 			
 	}
-		
+	@And("finalizo a aplicacao")
+	public static void finalizar(){
+		DriverFactory.killDriver();
+			
+	}
+	
 	
 }

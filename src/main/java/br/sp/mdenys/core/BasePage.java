@@ -42,6 +42,8 @@ public class BasePage {
 	public String obterTexto(String id) {
 		return obterTexto(By.id(id));
 	}
+	
+
 		
 
 	public static String replaceString(String nome,String de, String para) {

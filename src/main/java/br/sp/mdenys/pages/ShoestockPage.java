@@ -1,40 +1,76 @@
 package br.sp.mdenys.pages;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.sp.mdenys.core.BasePage;
 import br.sp.mdenys.core.DriverFactory;
+import io.cucumber.datatable.DataTable;
 
 public class ShoestockPage extends BasePage{
 	
 	protected static String nomeCorrigido;
 	protected static String nomeProdutoCarrinho;
+	protected static List<Map<String, String>> massa;
 
 
+
+	
+	public static void acessaPagina(DataTable data) {
+		massa =  data.asMaps(String.class, String.class);
+
+		DriverFactory.getDriver().get("https://www.shoestock.com.br");
+
+	}
+	
+	
+	
 	/**
 	 * metodo para preencher campo de busca  
 	 */
-	public static void searchProduct() {
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		write(By.xpath("//*[@id=\"search-input\"]"), "sapato social masculino");
+	public static void buscaProduto() {
+		try {
+			DriverFactory.getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			String xpathCampoBusca = "//*[@id='search-input']";
+			//DriverFactory.getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+//			WebElement myDynamicElement = (new WebDriverWait(DriverFactory.getDriver(), 20)).
+//			until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathCampoBusca)));
+			//write(By.xpath("//*[@id=\"search-input\"]"), "sapato social masculino");
+			
+			write(By.xpath(xpathCampoBusca), massa.get(0).get("produto"));
+			
+		}catch(Exception e) {
+			
+			
+		}
+		
+		
+		
 	}
 	/**
 	 * metodo para clicar no icone de busca 
 	 */
 	public static void searchclick() {
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		DriverFactory.getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+
 		click(By.xpath("//*[@id=\"header-content\"]/header/div/div/section[2]/section/form/div/button"));
+
+		
+
 	}
 	
 	/**
 	 * metodo para clicar no primeiro sapato da busca buscar o nome, corrigir tirando o Nome: para usar de comparacao
 	 */
 	public static void clicaPrimeiroSapato() {
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		DriverFactory.getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		click(By.xpath("//*[@id=\"item-list\"]/div[1]/div[1]/div[1]/a/img"));
 		String nomeProduto = coletaNomeProduto("//*[@id=\"features\"]/ul/li[1]");
 		nomeCorrigido = replaceString(nomeProduto, "Nome: ", "");
@@ -46,7 +82,7 @@ public class ShoestockPage extends BasePage{
 	 * metodo para coletar o nome do produto no carrinho e utiliza o metodo para comparacao  
 	 */
 	public static void validarProdutoCarrinho() {
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		DriverFactory.getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		nomeProdutoCarrinho = coletaNomeProduto("//html/body/div[1]/div[2]/div[2]/div[1]/div[2]/div/div[1]/div/div/h3");
 		System.out.println(nomeProdutoCarrinho);
 		comparaNomeProduto();
@@ -68,7 +104,6 @@ public class ShoestockPage extends BasePage{
 	 * metodo para coletar o nome 
 	 */
 	public static String coletaNomeProduto(String nomeProduto) {
-		//return obterTexto(By.cssSelector(".short-description"));
 		return obterTexto(By.xpath(nomeProduto));
 
 	}
@@ -77,7 +112,7 @@ public class ShoestockPage extends BasePage{
 	 * metodo para clicar no botao comprar
 	 */
 	public static void clicaBotaoComprar() {
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		DriverFactory.getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		click(By.xpath("//*[@id=\"buy-button-now\"]"));
 		
 	}
@@ -98,8 +133,8 @@ public class ShoestockPage extends BasePage{
 	 * metodo que seleciona o tamanho do sapato
 	 */
 	public static void selecionaTamanhoSapato() {
-		String xpathTamanho = comboTamanho("40");
-		DriverFactory.getDriver().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		String xpathTamanho = comboTamanho(massa.get(0).get("tamanho"));
+		DriverFactory.getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		click(By.xpath(xpathTamanho));
 	}
 	

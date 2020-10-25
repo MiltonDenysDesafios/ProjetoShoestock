@@ -24,13 +24,7 @@ public abstract class DriverFactory {
 				case CHROME:		
 					driver = new ChromeDriver();
 					System.setProperty("webdriver.chrome.driver","C:\\chromedriver\\chromedriver.exe");	
-					getDriver().get("https://www.shoestock.com.br");
-					//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-//					Robot robot = new Robot();
-//					robot.keyPress( KeyEvent.VK_TAB);
-//					robot.keyPress( KeyEvent.VK_TAB);
-//
-//					robot.keyPress( KeyEvent.VK_ENTER);
+
 					break;
 				}
 				driver.manage().window().maximize();
@@ -50,6 +44,7 @@ public abstract class DriverFactory {
 
 	public static void killDriver() {
 		if (driver != null) {
+			driver.close();
 			driver.quit();
 			driver = null;
 		}
