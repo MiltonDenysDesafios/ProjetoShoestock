@@ -12,34 +12,28 @@ public abstract class DriverFactory {
 
 	private static WebDriver driver;
 
-	public static WebDriver getDriver(){
-		
-		
+	public static WebDriver getDriver() {
+
 		try {
 			if (driver == null) {
 				switch (Propriedades.browser) {
 				case FIREFOX:
 					driver = new FirefoxDriver();
 					break;
-				case CHROME:		
+				case CHROME:
+					System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
 					driver = new ChromeDriver();
-					System.setProperty("webdriver.chrome.driver","C:\\chromedriver\\chromedriver.exe");	
-
 					break;
 				}
 				driver.manage().window().maximize();
-				
+
 			}
-		}catch(Exception e){
-			
-			
+		} catch (Exception e) {
+
 		}
-		
-		
+
 		return driver;
 
-		
-	
 	}
 
 	public static void killDriver() {

@@ -8,53 +8,50 @@ import io.cucumber.java.en.Given;
 
 public class ShoestockSteps {
 
-	
 	@Given("eu acesso a pagina principal")
-	public static void acessaPaginaPrincipal(DataTable data)  {
+	public static void acessaPaginaPrincipal(DataTable data) {
 		ShoestockPage.acessaPagina(data);
-		//DriverFactory.getDriver().get("https://www.shoestock.com.br");
-
 	}
 
-	
 	@And("preencho o campo de busca")
-	public static void preencheCampoBUsca(){
+	public static void preencheCampoBUsca() {
 		ShoestockPage.buscaProduto();
 	}
+
 	@And("clico no icone de busca")
-	public static void clicaIconeBusca(){
-		ShoestockPage.searchclick();
-			
+	public static void clicaIconeBusca() {
+		ShoestockPage.clicaIconeBuscar();
+
 	}
-	
+
 	@And("clico no primeiro sapato da lista")
-	public static void clicaPrimeiroSapato(){
+	public static void clicaPrimeiroSapato() {
 		ShoestockPage.clicaPrimeiroSapato();
-			
+
 	}
+
 	@And("seleciono o tamanho do sapato")
-	public static void selecionarTamanhoSapato(){
+	public static void selecionarTamanhoSapato() {
 		ShoestockPage.selecionaTamanhoSapato();
-			
+
 	}
-	
+
 	@And("clico no botao comprar")
-	public static void clicaBotaoComprar(){
+	public static void clicaBotaoComprar() {
 		ShoestockPage.clicaBotaoComprar();
-			
+
 	}
-	
-	
+
 	@And("valido se o produto escolhido esta correto")
-	public static void validarProdutoEscolhido(){
+	public static void validarProdutoEscolhido() {
 		ShoestockPage.validarProdutoCarrinho();
-			
+
 	}
+
 	@And("finalizo a aplicacao")
-	public static void finalizar(){
+	public static void finalizar() {
 		DriverFactory.killDriver();
-			
+
 	}
-	
-	
+
 }

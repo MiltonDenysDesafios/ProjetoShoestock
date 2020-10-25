@@ -13,4 +13,4 @@ Feature: Shoestock
     And seleciono o tamanho do sapato
     When clico no botao comprar
     Then valido se o produto escolhido esta correto
-    And finalizo a aplicacao
+    #And finalizo a aplicacao

@@ -11,10 +11,9 @@ public class BaseTest {
 
 	@After
 	public void finaliza() throws IOException{
+			
+		killDriver();
 		
-		if(Propriedades.FECHAR_BROWSER) {
-			killDriver();
-		}
 	}
 
 }
