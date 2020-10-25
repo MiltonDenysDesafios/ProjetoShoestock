@@ -11,7 +11,7 @@ https://github.com/mDenys7/ProjetoShoestock
 
 # Drivers
 
-Antes de rodar algum cenário Web você deve adicionar o driver do navegador em uma pasta reconhecida no path do sistema com a versão compatível a versão atual do seu navegador.
+Antes de rodar o cenário Web você deve adicionar o driver do navegador em uma pasta reconhecida no path do sistema com a versão compatível a versão atual do seu navegador.
 
 # Uso
 
