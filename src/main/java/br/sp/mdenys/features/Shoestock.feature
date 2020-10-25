@@ -4,11 +4,10 @@ Feature: Shoestock
 
   @validar_produtos_carrinho
   Scenario: Validar os produtos inclu�dos no carrinho na tela de pagamento
-    Given I acess the Home page 
-    #And I close the popup message
-    #And I acept the cockies
-    #And I click on programação
-    #And I scroll down to programação
-    #When I save the name and schedule time of first programation   
-    #And I click on the first programation
-    #Then I validate the title name is the same of the sheet
+    Given eu acesso a pagina principal
+    And preencho o campo de busca
+    And clico no icone de busca
+    And clico no primeiro sapato da lista
+    And seleciono o tamanho do sapato
+    When clico no botao comprar
+    Then valido se o produto escolhido esta correto

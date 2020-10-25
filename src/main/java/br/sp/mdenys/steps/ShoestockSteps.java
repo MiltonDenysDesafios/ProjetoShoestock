@@ -1,25 +1,53 @@
 package br.sp.mdenys.steps;
 
-import static br.sp.mdenys.core.DriverFactory.getDriver;
-
+import br.sp.mdenys.core.DriverFactory;
+import br.sp.mdenys.pages.ShoestockPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 
 public class ShoestockSteps {
 
 	
-	@Given("I acess the Home page")
-	public static void acessHomePage()  {		
-		getDriver().get("https://www.shoestock.com.br");
+	@Given("eu acesso a pagina principal")
+	public static void acessaPaginaPrincipal()  {		
+		DriverFactory.getDriver();
 
 	}
 
-	@Given("^I close the popup message$")
-	public static void iCloseThePopupMessage(){
+	
+	@And("preencho o campo de busca")
+	public static void preencheCampoBUsca(){
+		ShoestockPage.searchProduct();
+	}
+	@And("clico no icone de busca")
+	public static void clicaIconeBusca(){
+		ShoestockPage.searchclick();
+			
+	}
+	
+	@And("clico no primeiro sapato da lista")
+	public static void clicaPrimeiroSapato(){
+		ShoestockPage.clicaPrimeiroSapato();
+			
+	}
+	@And("seleciono o tamanho do sapato")
+	public static void selecionarTamanhoSapato(){
+		ShoestockPage.selecionaTamanhoSapato();
+			
+	}
+	
+	@And("clico no botao comprar")
+	public static void clicaBotaoComprar(){
+		ShoestockPage.clicaBotaoComprar();
+			
+	}
+	
+	
+	@And("valido se o produto escolhido esta correto")
+	public static void validarProdutoEscolhido(){
+		ShoestockPage.validarProdutoCarrinho();
+			
+	}
 		
-	}
-	
-	
 	
 }

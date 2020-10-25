@@ -1,6 +1,9 @@
 package br.sp.mdenys.core;
 
-import org.openqa.selenium.Dimension;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,21 +12,40 @@ public abstract class DriverFactory {
 
 	private static WebDriver driver;
 
-	public static WebDriver getDriver() {
+	public static WebDriver getDriver(){
 		
-		if (driver == null) {
-			switch (Propriedades.browser) {
-			case FIREFOX:
-				driver = new FirefoxDriver();
-				break;
-			case CHROME:
-				System.setProperty("webdriver.chrome.driver","C:\\chromedriver\\chromedriver.exe");
-				driver = new ChromeDriver();
-				break;
+		
+		try {
+			if (driver == null) {
+				switch (Propriedades.browser) {
+				case FIREFOX:
+					driver = new FirefoxDriver();
+					break;
+				case CHROME:		
+					driver = new ChromeDriver();
+					System.setProperty("webdriver.chrome.driver","C:\\chromedriver\\chromedriver.exe");	
+					getDriver().get("https://www.shoestock.com.br");
+					//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+//					Robot robot = new Robot();
+//					robot.keyPress( KeyEvent.VK_TAB);
+//					robot.keyPress( KeyEvent.VK_TAB);
+//
+//					robot.keyPress( KeyEvent.VK_ENTER);
+					break;
+				}
+				driver.manage().window().maximize();
+				
 			}
-			driver.manage().window().maximize();
+		}catch(Exception e){
+			
+			
 		}
+		
+		
 		return driver;
+
+		
+	
 	}
 
 	public static void killDriver() {
