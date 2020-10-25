@@ -7,7 +7,7 @@ https://github.com/mDenys7/ProjetoShoestock
 
 1-Deve ter a linguagem de programação Java instalado na máquina
 
-2-Deve ter alguma IDE para rodar o teste
+2-Deve ter uma IDE de preferencia para rodar o teste
 
 # Drivers
 
